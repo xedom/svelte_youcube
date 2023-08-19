@@ -22,7 +22,6 @@
   >
     User
   </Button>
-
 </nav>
 
 <style lang="scss">
