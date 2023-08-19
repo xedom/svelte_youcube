@@ -2,7 +2,9 @@
   import Comment from '$lib/components/Comment.svelte';
   import Button from '$lib/components/Button.svelte';
   import { ProfilePicture, } from '$lib/icons/index.js';
+  import ProfilePic from '$lib/components/ProfilePic.svelte';
 </script>
+
 
 
 <div class="player">
@@ -14,7 +16,7 @@
   <h1>They Have No Sense of Danger</h1>
 
   <div class="title">
-    <img src="{ProfilePicture}" alt="user">
+    <ProfilePic></ProfilePic>
     <span>
       <h2>Daily Dose Of Internet</h2>
       <h3>16,4 Mln Subs</h3>
@@ -56,13 +58,7 @@
     align-items: center;
     justify-content: center;
   }
-
-  img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 50%;
-  }
+  
   .comments {
     margin-top: 2em;
     display: flex;

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { CollapseIcon, ProfilePicture, SearchIcon, } from '$lib/icons/index.js';
   import Button from '$lib/components/Button.svelte';
+  import ProfilePic from '$lib/components/ProfilePic.svelte';
 </script>
 
 
@@ -14,14 +15,7 @@
     <Button icon={SearchIcon} collapsed={true}>Search</Button>
   </div>
   <Button>Upload</Button>
-  <Button
-    icon={ProfilePicture}
-    collapsed={true}
-    rounded={true}
-    onClick={() => {console.log("user")}}
-  >
-    User
-  </Button>
+  <ProfilePic size={"small"}></ProfilePic>
 </nav>
 
 <style lang="scss">

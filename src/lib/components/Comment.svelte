@@ -2,10 +2,11 @@
   import Comment from '$lib/components/Comment.svelte';
   import { ProfilePicture, } from '$lib/icons/index.js';
   import Button from '$lib/components/Button.svelte';
+  import ProfilePic from '$lib/components/ProfilePic.svelte';
 </script>
 
 <div class="comment">
-  <img src="{ProfilePicture}" alt="user">
+  <ProfilePic></ProfilePic>
   <div class="left">
     <div>
       <span>username</span> |
@@ -27,13 +28,6 @@
     padding: 1em;
     display: flex;
     gap: 1em;
-
-    img {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 50%;
-    }
 
     .left {
       display: flex;

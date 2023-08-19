@@ -4,6 +4,7 @@
   import pic2 from "$lib/img/2.jpg";
   import { ProfilePicture, } from '$lib/icons/index.js';
   import Button from '$lib/components/Button.svelte';
+  import ProfilePic from '$lib/components/ProfilePic.svelte';
 </script>
 
 <div class="background" style="background-image: url({pic4});">
@@ -12,7 +13,7 @@
 
 <div class="content">
   <div class="user">
-    <img src="{ProfilePicture}" alt="user">
+    <ProfilePic size={"large"}></ProfilePic>
     <div class="col">
       <h1>username</h1>
 
@@ -88,13 +89,6 @@
 
     .col {
       flex: 1;
-    }
-
-    img {
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 50%;
     }
 
   }

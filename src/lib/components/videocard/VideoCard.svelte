@@ -9,6 +9,7 @@
   }
 
   import { ProfilePicture } from '$lib/icons/index.js';
+  import ProfilePic from '$lib/components/ProfilePic.svelte';
   import pic1 from "$lib/img/1.jpg";
   export const videoData: any|undefined = { user: {
     name: "pingu",
@@ -19,7 +20,10 @@
 <div class="card">
   <img src="{videoData?.thumbnail}" alt="video thumbnail">
   <div class="bottom">
-    <div class="user"><img src="{videoData?.user?.avatar}" alt="user"></div>
+    <div class="user">
+      <!-- <img src="{videoData?.user?.avatar}" alt="user"> -->
+      <ProfilePic size={"small"}>{videoData?.user?.avatar}</ProfilePic>
+    </div>
     <div class="right">
       <div class="title">{videoData?.title}</div>
       <div class="username">{videoData?.user?.name}</div>
