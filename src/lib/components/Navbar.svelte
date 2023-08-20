@@ -2,20 +2,23 @@
   import { CollapseIcon, ProfilePicture, SearchIcon, } from '$lib/icons/index.js';
   import Button from '$lib/components/Button.svelte';
   import ProfilePic from '$lib/components/ProfilePic.svelte';
+
+  export let onCollapse: () => void = () => {};
 </script>
 
 
 <nav>
-  <Button icon={CollapseIcon} collapsed={true} onClick={() => {console.log("collapse")}}>
+  <Button icon={CollapseIcon} collapsed={true} onClick={() => onCollapse()}>
     Collapse
   </Button>
-  <img src="" alt="logo">
+  <!-- <img src="" alt="logo"> -->
+  <h2>YOU/CUBE</h2>
   <div class="search">
     <input type="text"/>
     <Button icon={SearchIcon} collapsed={true}>Search</Button>
   </div>
   <Button>Upload</Button>
-  <ProfilePic size={"small"}></ProfilePic>
+  <ProfilePic pic={undefined} size={"small"}></ProfilePic>
 </nav>
 
 <style lang="scss">

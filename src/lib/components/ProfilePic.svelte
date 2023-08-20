@@ -2,13 +2,22 @@
   import { ProfilePicture, } from '$lib/icons/index.js';
 
   export let size: string = "normal";
+  export let pic: string|undefined = undefined;
 </script>
 
-<img
-  src="{ProfilePicture}"
-  class:small={size == "small"}
-  class:large={size == "large"}
-  alt="user">
+{#if pic}
+  <img
+    src="{pic}"
+    class:small={size == "small"}
+    class:large={size == "large"}
+    alt="user">
+{:else}
+  <img
+    src="{ProfilePicture}"
+    class:small={size == "small"}
+    class:large={size == "large"}
+    alt="user">
+{/if}
 
 <style lang="scss">
   img {

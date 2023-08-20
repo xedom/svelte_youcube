@@ -28,3 +28,20 @@ body > div {
 	display: flex;
 	flex-direction: column;
 }
+
+::-webkit-scrollbar {
+	height: 8px;
+	width: 8px;
+}
+::-webkit-scrollbar-track {
+	background: #dadada;
+	border-radius: 2em;
+}
+::-webkit-scrollbar-thumb {
+	background: #242424;
+	border-radius: 2em;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: #202020;
+	border-radius: 2em;
+}

@@ -1,8 +1,6 @@
 <script lang="ts">
-  import Comment from '$lib/components/Comment.svelte';
   import pic4 from "$lib/img/4.jpg";
   import pic2 from "$lib/img/2.jpg";
-  import { ProfilePicture, } from '$lib/icons/index.js';
   import Button from '$lib/components/Button.svelte';
   import ProfilePic from '$lib/components/ProfilePic.svelte';
 </script>
@@ -13,7 +11,7 @@
 
 <div class="content">
   <div class="user">
-    <ProfilePic size={"large"}></ProfilePic>
+    <ProfilePic pic={undefined} size={"large"}></ProfilePic>
     <div class="col">
       <h1>username</h1>
 
@@ -49,9 +47,9 @@
   </div>
   <div class="comments">
     <!-- infinite scrolling -->
+    <!-- <Comment/>
     <Comment/>
-    <Comment/>
-    <Comment/>
+    <Comment/> -->
   </div>
 </div>
 

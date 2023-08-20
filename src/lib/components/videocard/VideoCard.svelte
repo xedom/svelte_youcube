@@ -1,56 +1,67 @@
 <script lang="ts">
   // { user: any, thumbnail: any, title: any, views: any, data: any }
-
-  function formatDate(date: string) {
-    const dateCurr = new Date(date);
-    // return dateCurr.toLocaleDateString("it-IT")
-    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    return `${dateCurr.getHours()}:${dateCurr.getMinutes()}, ${dateCurr.getDate()} ${months[dateCurr.getMonth()]}`
-  }
-
-  import { ProfilePicture } from '$lib/icons/index.js';
+  import { parseTimestampFromNow, parseTime, parseViews } from '$lib/utils/index';
   import ProfilePic from '$lib/components/ProfilePic.svelte';
-  import pic1 from "$lib/img/1.jpg";
-  export const videoData: any|undefined = { user: {
-    name: "pingu",
-    avatar: ProfilePicture,
-  }, thumbnail: pic1, title: "title 1", views: 111, data: Date.now()+1000 };
+  import type { Video } from '$lib/db/types';
+
+  export let videoData: Video;
 </script>
 
-<div class="card">
-  <img src="{videoData?.thumbnail}" alt="video thumbnail">
+<a class="card" href={`/video/${videoData?.id}`}>
+  <div class="preview">
+    <img src="{videoData?.thumbnail}" alt="video thumbnail">
+    <span class="time">{parseTime(videoData?.duration)}</span>
+  </div>
   <div class="bottom">
     <div class="user">
       <!-- <img src="{videoData?.user?.avatar}" alt="user"> -->
-      <ProfilePic size={"small"}>{videoData?.user?.avatar}</ProfilePic>
+      <ProfilePic size={"small"} pic={videoData?.user?.avatar}></ProfilePic>
     </div>
     <div class="right">
       <div class="title">{videoData?.title}</div>
       <div class="username">{videoData?.user?.name}</div>
       <div class="info">
-        <div class="views">{videoData?.views} Views</div>
-        <div class="date">{formatDate(videoData?.data)}</div>
+        <div class="views">{parseViews(videoData?.views)} Views</div>
+        <div class="date">{parseTimestampFromNow(videoData?.timestamp)}</div>
       </div>
     </div>
   </div>
-</div>
+</a>
 
 <style lang="scss">
-  .card {
+  a.card {
+    text-decoration: none;
+    color: inherit;
     cursor: pointer;
     display: flex;
-    flex-direction: column;
     width: 350px;
+    flex-direction: column;
     border-radius: var(--radius);
-    justify-content: center;
-    align-items: center;
     gap: 0.5em;
 
-    img {
-      height: 200px;
-      width: 100%;
+    .preview {
+      position: relative;
       border-radius: var(--radius);
-      object-fit: cover;
+      overflow: hidden;
+      height: 200px;
+
+      img {
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .time {
+        font-size: 0.8em;
+        position: absolute;
+        border-radius: var(--radius);
+        padding: 0.25em 0.5em;
+        background-color: black;
+        color: #ffffff;
+        bottom: 5px;
+        right: 5px;
+      }
     }
 
     .title {
@@ -61,12 +72,6 @@
       display: flex;
       width: 100%;
       gap: 0.5em;
-
-      img {
-        height: 2.5em;
-        width: 2.5em;
-        border-radius: 50%;
-      }
     }
 
     .right {
@@ -78,6 +83,11 @@
       width: 100%;
       flex-direction: row;
       gap: 1em;
+      font-size: 0.8em;
+    }
+
+    .username {
+      font-size: 0.8em;
     }
   }
 </style>

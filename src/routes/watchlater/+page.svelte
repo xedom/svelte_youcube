@@ -1,10 +1,9 @@
 <script lang="ts">
   import pic3 from "$lib/img/3.jpg";
   import Button from '$lib/components/Button.svelte';
-
-  const vids = [0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9]
-
   import { DragIcon, RemoveIcon, } from '$lib/icons/index.js';
+  
+  export let data: any;
 </script>
 
 <div class="playlist">
@@ -23,16 +22,16 @@
     </div>
   </div>
   <div class="videos">
-    {#each vids as vid}
+    {#each data.videos as vid}
       <div class="video">
         <Button icon="{DragIcon}"></Button>
-        <img class="video-preview" src="{pic3}" alt="video">
+        <img class="video-preview" src="{vid.thumbnail}" alt="video">
         <div class="info">
-          <h2 class="title">video title</h2>
+          <h3 class="title">{vid.title}</h3>
           <span>
-            <span class="user">pingu</span> |
-            <span class="views">223 views</span> |
-            <span class="date">22 Sept</span>
+            <span class="user">{vid.user.username}</span> |
+            <span class="views">{vid.views} views</span> |
+            <span class="date">{vid.data}</span>
           </span>
         </div>
         <Button icon="{RemoveIcon}"></Button>

@@ -1,18 +1,19 @@
 <script lang="ts">
-  import pic3 from "$lib/img/3.jpg";
-  import Button from '$lib/components/Button.svelte';
-  import {
-    VideoCard, VideoContainer,
-  } from "$lib/components/videocard/index.js";
+  import { VideoCard, VideoContainer, } from "$lib/components/videocard/index.js";
+  import { WaitingGif } from '$lib/icons/index.js';
+  import type { Video } from '$lib/db/types';
 
-  const vids = [0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9]
-
-  import { DragIcon, RemoveIcon, } from '$lib/icons/index.js';
+  export let data: any;
+  let videos: Video[] = data.videos;
 </script>
 
-<div class="sponsored">
+{#if data.videos === undefined}
+  <img src="{WaitingGif}" alt="WaitingGif"> Loading...
+{/if}
+
+<div>
   <VideoContainer>
-    {#each vids as video}
+    {#each videos as video}
       <VideoCard videoData={video}/>
     {/each}
   </VideoContainer>

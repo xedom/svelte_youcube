@@ -2,15 +2,18 @@
   import './styles.css';
   import Navbar from '$lib/components/Navbar.svelte';
   import SideNavbar from '$lib/components/SideNavbar.svelte';
+
+  $: collapsed = false;
+
 </script>
 
 <svelte:head>
-  <title>YouClone</title>
+  <title>You/Clone</title>
 </svelte:head>
 
-<Navbar/>
+<Navbar onCollapse={() => collapsed = !collapsed}/>
 <div class="content">
-  <SideNavbar/>
+  <SideNavbar {collapsed}/>
   <main>
     <slot />
   </main>

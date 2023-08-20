@@ -10,41 +10,43 @@
   function onClick(href: string) {
     goto(href)
   }
+
+  export let collapsed: boolean = false;
 </script>
 
 <aside>
   <Button onClick={() => onClick("/")}
-    collapsed={false}
+    {collapsed}
     icon={HomeIcon}
   >
     Home
   </Button>
   <Button onClick={() => onClick("/user")}
-    collapsed={false}
+    {collapsed}
     icon={PersonIcon}
   >
     User
   </Button>
   <Button onClick={() => onClick("/subs")}
-    collapsed={false}
+    {collapsed}
     icon={SubscriptionsIcon}
   >
     Subs
   </Button>
   <Button onClick={() => onClick("/auth")}
-    collapsed={false}
+    {collapsed}
     icon={PersonIcon}
   >
     Auth
   </Button>
-  <Button onClick={() => onClick("/video")}
-    collapsed={false}
+  <!-- <Button onClick={() => onClick("/video")}
+    {collapsed}
     icon={SmartDisplayIcon}
   >
     Video
-  </Button>
+  </Button> -->
   <Button onClick={() => onClick("/watchlater")}
-    collapsed={false}
+    {collapsed}
     icon={LibraryIcon}
   >
     Watch Later
@@ -53,7 +55,7 @@
 
 <style lang="scss">
   aside {
-    width: 200px;
+    // width: 200px;
 
     display: flex;
     flex-direction: column;
