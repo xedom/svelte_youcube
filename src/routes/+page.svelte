@@ -13,13 +13,12 @@
   const { sponsored_videos, shorts_videos, new_videos, films_videos, random_videos } = videos;
 </script>
 
-<Modal id='short-modal'>
+<!-- <Modal id='short-modal'>
 	<h1>Shorts</h1>
   <div class="modalButtons">
     <Button onClick={()=>getModal('short-modal').close()}>Cancel</Button>
   </div>
-</Modal>
-
+</Modal> -->
 
 <div class="buttons">
   <Button>All</Button>
