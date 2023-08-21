@@ -3,16 +3,50 @@
   import Button from '$lib/components/Button.svelte';
   import { parseDateWithTime, parseViews } from '$lib/utils/index';
   import ProfilePic from '$lib/components/ProfilePic.svelte';
+  import { CollapseIcon, ProfilePicture, SearchIcon, } from '$lib/icons/index.js';
   import type { Video, User, Comment as CommentType } from '$lib/db/types';
 
+  $: isDescriptionCollapsed = true;
+  $: commentInput = '';
+
   export let data: any;
-  const video: Video&{comments: CommentType[]} = data.video;
-  const user: User|undefined = video.user;
-  const comments: CommentType[] = video.comments;
+  let video: Video&{comments: CommentType[]} = data.video;
+  let user: User|undefined = video.user;
+  let comments: CommentType[] = video.comments;
 
   if (!user) throw new Error("User not found");
 
-  $: isDescriptionCollapsed = true;
+  async function onCommentSubmit() {
+    const loggedUser: User = {
+      id: 1001,
+      username: 'Pingu',
+      avatar: ProfilePicture,
+      subs: 420,
+      password: 'nootnoot',
+      name: 'pingu de bro',
+      email: 'pingu@noot.com',
+      videos: 314,
+    };
+
+    const newComment: CommentType = {
+      id: 100+Math.round(Math.random()*100000),
+      user: loggedUser,
+      userid: loggedUser.id,
+      videoid: video.id,
+      body: commentInput,
+    }
+
+    // const res = await fetch('/comment', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify(newComment)
+    // });
+    // const values = await res.json();
+
+    commentInput = '';
+    comments = [...comments, newComment];
+  }
+
 </script>
 
 
@@ -27,10 +61,10 @@
   <h1>{video.title}</h1>
 
   <div class="title">
-    <ProfilePic pic={user.avatar}></ProfilePic>
+    <ProfilePic pic={user?.avatar}></ProfilePic>
     <span>
-      <h2>{user.username}</h2>
-      <h3>{parseViews(user.subs)} Subs</h3>
+      <h2>{user?.username}</h2>
+      <h3>{parseViews(user?.subs??0)} Subs</h3>
     </span>
 
     <Button>Subscribe</Button>
@@ -57,9 +91,10 @@
 </div>
 
 <div class="comments">
+  <h4>input: {commentInput}</h4>
   <div class="input">
-    <input type="text" />
-    <Button>Send</Button>
+    <input type="text" bind:value={commentInput} />
+    <Button onClick={onCommentSubmit}>Send</Button>
   </div>
 
   {#each comments as comment}

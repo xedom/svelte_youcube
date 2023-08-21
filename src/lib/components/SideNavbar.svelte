@@ -21,12 +21,12 @@
   >
     Home
   </Button>
-  <Button onClick={() => onClick("/user")}
+  <!-- <Button onClick={() => onClick("/user")}
     {collapsed}
     icon={PersonIcon}
   >
     User
-  </Button>
+  </Button> -->
   <Button onClick={() => onClick("/subs")}
     {collapsed}
     icon={SubscriptionsIcon}

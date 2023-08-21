@@ -12,6 +12,16 @@ export function getVideos(): Video[] {
   return videosCache;
 }
 
+export async function getVideosCountFrom(count: number, skip: number): Promise<Video[]> {
+  if (count <= 0) return [];
+  // checking if the skip is not out of bounds
+  // if so, we fix the skip
+  if (skip+count >= 150) skip = 150-count;
+
+  const videos = await getVideosCount(count+skip);
+  return videos.slice(skip, skip+count);
+}
+
 export async function getVideosCount(count: number): Promise<Video[]> {
   if (count <= 0) return [];
   if (count >= videosCache.length) {

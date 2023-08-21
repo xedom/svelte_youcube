@@ -1,7 +1,16 @@
 import type { User } from './types';
 import { fetchUser, getRandomDuration } from '$lib/utils/fetch';
 
-let usersCache: User[] = [];
+let usersCache: User[] = [{
+  id: 1001,
+  username: 'Pingu',
+  avatar: '/src/lib/icons/profile.gif',
+  subs: 420,
+  password: 'nootnoot',
+  name: 'pingu de bro',
+  email: 'pingu@noot.com',
+  videos: 314,
+}];
 
 export function getUsers(): User[] {
   return usersCache;
@@ -26,12 +35,16 @@ export async function getUser(id: number): Promise<User|undefined> {
     videos: 0, // add some logic
   }
 
-  addUser(newUser);
-  return newUser;
+  return addUser(newUser);
 }
 
-export function addUser(user: User): void {
+export function addUser(user: User): User {
+  user = {
+    ...user,
+    avatar: `https://i.pravatar.cc/150?img=${user.id}`
+  }
   usersCache.push(user);
+  return user;
 }
 
 export function removeUser(id: number): void {

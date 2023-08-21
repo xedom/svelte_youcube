@@ -5,11 +5,11 @@ import type { Video } from '$lib/db/types';
 export const load: PageServerLoad = async ({ params }) => {
   try {
     const res = await Promise.all([
-      fetch('http://127.0.0.1:5173/api/videos?count=6'),
-      fetch('http://127.0.0.1:5173/api/videos?count=8'),
-      fetch('http://127.0.0.1:5173/api/videos?count=9'),
-      fetch('http://127.0.0.1:5173/api/videos?count=8'),
-      fetch('http://127.0.0.1:5173/api/videos?count=3'),
+      fetch('http://127.0.0.1:5173/api/videos?count=6&skip=0'),
+      fetch('http://127.0.0.1:5173/api/videos?count=8&skip=15'),
+      fetch('http://127.0.0.1:5173/api/videos?count=9&skip=30'),
+      fetch('http://127.0.0.1:5173/api/videos?count=8&skip=45'),
+      fetch('http://127.0.0.1:5173/api/videos?count=3&skip=60'),
     ]);
     const data = await Promise.all(res.map((f:any) => f.json()));
     const fetched_videos: Video[][] = data.map((d:any) => d.videos);

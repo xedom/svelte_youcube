@@ -1,13 +1,13 @@
 <script lang="ts">
   import { DragIcon, RemoveIcon, } from '$lib/icons/index.js';
-  import Button from '$lib/components/Button.svelte';
   import type { Video } from "$lib/db/types";
   import { parseViews, parseTimestampFromNow } from '$lib/utils/index';
 
   export let video: Video;
 </script>
 
-<div class="video" draggable="true" id="{video.id.toString()}"
+<a class="video" draggable="true" id="{video.id.toString()}"
+  href="{'/video/'+video.id}"
   on:dragenter on:drag on:drop on:dragover
   >
   <!-- <Button icon="{DragIcon}" /> -->
@@ -22,9 +22,14 @@
     </span>
   </div>
   <!-- <Button icon="{RemoveIcon}"></Button> -->
-</div>
+</a>
 
 <style lang="scss">
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
   .video {
     // flex: 1;
     display: flex;
