@@ -8,7 +8,7 @@
 
 <button class:rounded={rounded} on:click="{onClick}">
   {#if icon !== undefined}
-    <img src="{icon}" alt="button img">
+    <img src="{icon}" alt="button img" draggable="false">
   {/if}
   {#if collapsed === false}
     <slot />

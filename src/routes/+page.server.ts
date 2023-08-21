@@ -9,7 +9,7 @@ export const load: PageServerLoad = async ({ params }) => {
       fetch('http://127.0.0.1:5173/api/videos?count=8'),
       fetch('http://127.0.0.1:5173/api/videos?count=9'),
       fetch('http://127.0.0.1:5173/api/videos?count=8'),
-      fetch('http://127.0.0.1:5173/api/videos?count=3')
+      fetch('http://127.0.0.1:5173/api/videos?count=3'),
     ]);
     const data = await Promise.all(res.map((f:any) => f.json()));
     const fetched_videos: Video[][] = data.map((d:any) => d.videos);

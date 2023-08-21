@@ -1,15 +1,57 @@
 <script lang="ts">
   import pic3 from "$lib/img/3.jpg";
   import Button from '$lib/components/Button.svelte';
-  import { DragIcon, RemoveIcon, } from '$lib/icons/index.js';
-  
+  import { PlayListVideoCard } from '$lib/components/videocard';
+  import type { Video } from "$lib/db/types";
+
   export let data: any;
+  $: videos = data.videos;
+
+  let dragged_video: Video|undefined = undefined;
+  let dropover_id: number|undefined = undefined;
+
+  function onDropOver(e: DragEvent) {
+    e.preventDefault();
+    const target = e.target as HTMLButtonElement;
+    const vid_id = target.getAttribute('id');
+    if (vid_id == null || dragged_video?.id == parseInt(vid_id)) return;
+    dropover_id = parseInt(vid_id);
+  }
+
+  function onDrag(e: DragEvent) {
+    const target = e.target as HTMLButtonElement;
+    const drag_element_id = target.getAttribute('id');
+    const video = videos.find((v: any) => v.id == drag_element_id);
+    if (video) dragged_video = video;
+    // console.log('onDrag', drag_element_id, video, videos);
+    e?.dataTransfer?.setData("text", drag_element_id??'');
+  }
+
+  function onDrop(e: DragEvent) {
+    const target = e.target as HTMLButtonElement;
+    // const drag_element_id = target.getAttribute('id');
+    // ev.preventDefault();
+    // console.log('onDrop', dragged_video?.id, ">>", target);
+    if (dropover_id == undefined || dragged_video == undefined) return;
+    
+    const dragged_video_index = videos.findIndex((v: any) => v.id == dragged_video?.id);
+    const dropover_video_index = videos.findIndex((v: any) => v.id == dropover_id);
+    if (dragged_video_index == -1 || dropover_video_index == -1) return;
+
+    if (!dragged_video) return
+    let new_videos = [...videos];
+    new_videos.splice(dragged_video_index, 1);
+    new_videos.splice(dropover_video_index, 0, dragged_video);
+    videos = new_videos;
+
+    dragged_video = undefined;
+    dropover_id = undefined;
+  }
 </script>
 
 <div class="playlist">
   <div class="summary">
     <img class="bg" src="{pic3}" alt="">
-
     <img class="preview" src="{pic3}" alt="">
 
     <h1>Watchlater</h1>
@@ -21,21 +63,13 @@
       <Button>Play Randomly</Button>
     </div>
   </div>
-  <div class="videos">
-    {#each data.videos as vid}
-      <div class="video">
-        <Button icon="{DragIcon}"></Button>
-        <img class="video-preview" src="{vid.thumbnail}" alt="video">
-        <div class="info">
-          <h3 class="title">{vid.title}</h3>
-          <span>
-            <span class="user">{vid.user.username}</span> |
-            <span class="views">{vid.views} views</span> |
-            <span class="date">{vid.data}</span>
-          </span>
-        </div>
-        <Button icon="{RemoveIcon}"></Button>
-      </div>
+  <div id="videos" class="videos">
+    {#each videos as video (video.id)}
+      <PlayListVideoCard {video}
+        on:drag={onDrag}
+        on:drop={onDrop}
+        on:dragover={onDropOver}
+      />
     {/each}
   </div>
 </div>
@@ -56,7 +90,8 @@
     display: flex;
     flex-direction: column;
     gap: 1em;
-
+    background: linear-gradient(transparent 66%, rgba(255, 255, 255, 0.9));
+    
     .buttons {
       display: flex;
       gap: 0.5em;
@@ -82,30 +117,5 @@
     flex-direction: row;
     overflow: auto;
     // padding: 0 0.5em;
-  }
-  .video {
-    // flex: 1;
-    display: flex;
-    margin: 0 .5em .5em .5em;
-    padding: .25em;
-    // align-items: center;
-    background-color: #f5f5f5;
-    border-radius: var(--radius);
-    // padding: 0 1em;
-    gap: 1em;
-
-    .info {
-      flex: 1;
-    }
-
-    &:hover {
-      cursor: pointer;
-      background-color: #e9e9e9;
-    }
-
-    img.video-preview {
-      width: 130px;
-      border-radius: var(--radius);
-    }
   }
 </style>
