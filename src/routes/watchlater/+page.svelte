@@ -3,6 +3,7 @@
   import Button from '$lib/components/Button.svelte';
   import { PlayListVideoCard } from '$lib/components/videocard';
   import type { Video } from "$lib/db/types";
+    import { goto } from "$app/navigation";
 
   export let data: any;
   $: videos = data.videos;
@@ -55,12 +56,12 @@
     <img class="preview" src="{pic3}" alt="">
 
     <h1>Watchlater</h1>
-    <h3>Pingu</h3>
+    <p>Created by Pingu</p>
   
     <div class="buttons">
       <Button>Share</Button>
-      <Button>Play</Button>
-      <Button>Play Randomly</Button>
+      <Button onClick={ () => goto(`/video/${videos[0].id}?playlist=1`) }>Play</Button>
+      <Button onClick={ () => goto(`/video/${videos[Math.floor(Math.random()*videos.length)].id}?playlist=1`) }>Play Randomly</Button>
     </div>
   </div>
   <div id="videos" class="videos">

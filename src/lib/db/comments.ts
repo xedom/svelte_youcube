@@ -46,3 +46,7 @@ export function getCommentsByVideoId(videoid: number): Comment[] {
   fetchComments(videoid);
   return commentsCache.filter((comment) => comment.videoid === videoid);
 }
+
+export function getCommentsByUserId(userid: number): Comment[] {
+  return commentsCache.filter((comment) => comment.userid === userid);
+}

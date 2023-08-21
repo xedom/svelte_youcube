@@ -13,10 +13,10 @@
     <span class="time">{parseTime(videoData?.duration)}</span>
   </div>
   <div class="bottom">
-    <div class="user">
+    <a class="user" href="{'/user/'+videoData?.user?.id}">
       <!-- <img src="{videoData?.user?.avatar}" alt="user"> -->
       <ProfilePic size={"small"} pic={videoData?.user?.avatar}></ProfilePic>
-    </div>
+    </a>
     <div class="right">
       <div class="title">{videoData?.title}</div>
       <div class="username">{videoData?.user?.name}</div>
@@ -30,11 +30,12 @@
 
 <style lang="scss">
   a.card {
+    align-items: stretch;
     text-decoration: none;
     color: inherit;
     cursor: pointer;
     display: flex;
-    width: 350px;
+    // max-width: 350px;
     flex-direction: column;
     border-radius: var(--radius);
     gap: 0.5em;
