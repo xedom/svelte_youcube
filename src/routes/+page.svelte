@@ -7,15 +7,17 @@
    
 
   import Button from '$lib/components/Button.svelte';
+  import type { Video } from "$lib/db/types";
 
   export let data: any;
+  let videos = data.videos;
   const {
     sponsored_videos,
     shorts_videos,
     new_videos,
     films_videos,
     random_videos
-  } = data.videos;
+  } = videos;
 </script>
 
 <div class="buttons">

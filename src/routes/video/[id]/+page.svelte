@@ -3,7 +3,7 @@
   import Button from '$lib/components/Button.svelte';
   import { parseDateWithTime, parseViews } from '$lib/utils/index';
   import ProfilePic from '$lib/components/ProfilePic.svelte';
-  import { CollapseIcon, ProfilePicture, SearchIcon, } from '$lib/icons/index.js';
+  import { ProfilePicture, } from '$lib/icons';
   import type { Video, User, Comment as CommentType } from '$lib/db/types';
 
   $: isDescriptionCollapsed = true;
@@ -17,6 +17,8 @@
   if (!user) throw new Error("User not found");
 
   async function onCommentSubmit() {
+    if (commentInput.trim() == '') return;
+
     const loggedUser: User = {
       id: 1001,
       username: 'Pingu',
@@ -44,6 +46,7 @@
     // const values = await res.json();
 
     commentInput = '';
+    // comments = [newComment, ...comments];
     comments = [...comments, newComment];
   }
 
@@ -61,9 +64,9 @@
   <h1>{video.title}</h1>
 
   <div class="title">
-    <ProfilePic pic={user?.avatar}></ProfilePic>
+    <a href={"/user/"+user?.id}><ProfilePic pic={user?.avatar}></ProfilePic></a>
     <span>
-      <h2>{user?.username}</h2>
+      <a href={"/user/"+user?.id}><h2>{user?.username}</h2></a>
       <h3>{parseViews(user?.subs??0)} Subs</h3>
     </span>
 
@@ -86,27 +89,31 @@
       <span>{video.description}</span>
       <Button onClick={() => {isDescriptionCollapsed = !isDescriptionCollapsed}}>Show Less</Button>
     {/if}
-    
+
   </div>
 </div>
 
 <div class="comments">
-  <h4>input: {commentInput}</h4>
+  <!-- <h4>input: {commentInput}</h4> -->
   <div class="input">
     <input type="text" bind:value={commentInput} />
     <Button onClick={onCommentSubmit}>Send</Button>
   </div>
-
-  {#each comments as comment}
-    <Comment commentData={comment}></Comment>
-  {/each}
   {#if comments.length === 0}
     <span>No comments yet</span>
+  {:else}
+    {#each comments as comment}
+      <Comment {comment}></Comment>
+    {/each}
   {/if}
 
 </div>
 
 <style lang="scss">
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
   .player {
     flex: none;
     background-color: #151515;
@@ -118,7 +125,7 @@
       height: 100%;
     }
   }
-  
+
   .comments {
     margin-top: 2em;
     display: flex;
@@ -127,6 +134,7 @@
   }
   .input {
     display: flex;
+    gap: 1em;
 
     input {
       flex: 1;

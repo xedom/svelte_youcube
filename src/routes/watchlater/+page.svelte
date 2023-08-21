@@ -34,7 +34,7 @@
     // ev.preventDefault();
     // console.log('onDrop', dragged_video?.id, ">>", target);
     if (dropover_id == undefined || dragged_video == undefined) return;
-    
+
     const dragged_video_index = videos.findIndex((v: any) => v.id == dragged_video?.id);
     const dropover_video_index = videos.findIndex((v: any) => v.id == dropover_id);
     if (dragged_video_index == -1 || dropover_video_index == -1) return;
@@ -57,7 +57,7 @@
 
     <h1>Watchlater</h1>
     <p>Created by Pingu</p>
-  
+
     <div class="buttons">
       <Button>Share</Button>
       <Button onClick={ () => goto(`/video/${videos[0].id}?playlist=1`) }>Play</Button>
@@ -66,7 +66,7 @@
   </div>
   <div id="videos" class="videos">
     {#each videos as video (video.id)}
-      <PlayListVideoCard {video}
+      <PlayListVideoCard {video} user={video?.user}
         on:drag={onDrag}
         on:drop={onDrop}
         on:dragover={onDropOver}
@@ -92,7 +92,7 @@
     flex-direction: column;
     gap: 1em;
     background: linear-gradient(transparent 66%, rgba(255, 255, 255, 0.9));
-    
+
     .buttons {
       display: flex;
       gap: 0.5em;

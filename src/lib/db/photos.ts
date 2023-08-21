@@ -6,7 +6,12 @@ export function addPhoto(photo: string): void {
 }
 
 export function addPhotos(photos: string[]): void {
-  photosCache.push(...photos);
+  for (let i = 0; i < photos.length; i++) {
+    const photo = photos[i];
+    if (photosCache.includes(photo)) continue;
+    photosCache.push(photo);
+  }
+  // photosCache.push(...photos);
 }
 
 export function getPhotos(): string[] {

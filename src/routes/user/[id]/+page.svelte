@@ -1,10 +1,9 @@
 <script lang="ts">
   import pic4 from "$lib/img/4.jpg";
-  import pic2 from "$lib/img/2.jpg";
   import Button from '$lib/components/Button.svelte';
   import ProfilePic from '$lib/components/ProfilePic.svelte';
   import Comment from '$lib/components/Comment.svelte';
-  import { VideoCard } from '$lib/components/videocard';
+  import { VideoCard, VideoContainer } from '$lib/components/videocard';
   import type { Video, User, Comment as CommentType } from '$lib/db/types';
 
   export let data: any;
@@ -13,7 +12,7 @@
   const videos: Video[] = data.videos;
   const lastVideo: Video = videos[videos.length - 1];
 
-  enum Page { Home, Videos, Community, Info, } 
+  enum Page { Home, Videos, Community, Info, }
 
   $: page = Page.Home;
 </script>
@@ -56,13 +55,14 @@
   {/if}
 
 <!-- videos -->
+
   {#if videos.length > 0 && page == Page.Videos}
     <h3>Uploaded Videos</h3>
-    <div class="videos">
-    {#each videos as video}
-      <VideoCard videoData={video}></VideoCard>
-    {/each}
-    </div>
+    <VideoContainer>
+      {#each videos as video}
+        <VideoCard videoData={video}></VideoCard>
+      {/each}
+    </VideoContainer>
   {/if}
 
 <!-- community -->
@@ -75,7 +75,7 @@
       </div> -->
       <div class="comments">
         {#each comments as comment}
-          <Comment commentData={comment}/>
+          <Comment {comment}/>
         {/each}
       </div>
     </div>
@@ -99,7 +99,7 @@
     flex: none;
     height: 300px;
     border-radius: var(--radius);
-    
+
     background-attachment: fixed;
     background-position: bottom;
     background-repeat: no-repeat;
@@ -109,7 +109,7 @@
   .user {
     display: flex;
     flex-direction: row;
-    
+
     gap: 2em;
     padding: 1em;
 
@@ -139,13 +139,6 @@
       flex-direction: column;
       gap: 1em;
     }
-  }
-
-  .videos {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 1em;
   }
 
   .community {

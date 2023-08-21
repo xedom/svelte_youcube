@@ -12,16 +12,20 @@
     Collapse
   </Button>
   <!-- <img src="" alt="logo"> -->
-  <h2>YOU/CUBE</h2>
+  <a href="/"><h2>YOU/CUBE</h2></a>
   <div class="search">
     <input type="text"/>
     <Button icon={SearchIcon} collapsed={true}>Search</Button>
   </div>
   <Button>Upload</Button>
-  <ProfilePic pic={undefined} size={"small"}></ProfilePic>
+  <a href="/user/1001"><ProfilePic pic={undefined} size={"small"}/></a>
 </nav>
 
 <style lang="scss">
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
   nav {
     display: flex;
     flex-direction: row;

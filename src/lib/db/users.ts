@@ -41,7 +41,7 @@ export async function getUser(id: number): Promise<User|undefined> {
 export function addUser(user: User): User {
   user = {
     ...user,
-    avatar: `https://i.pravatar.cc/150?img=${user.id}`
+    avatar: `https://i.pravatar.cc/120?u=${user.id}`
   }
   usersCache.push(user);
   return user;

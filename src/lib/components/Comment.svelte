@@ -3,20 +3,20 @@
   import ProfilePic from '$lib/components/ProfilePic.svelte';
   import type { Video, User, Comment as CommentType } from '$lib/db/types';
 
-  export let commentData: CommentType;
-  let user = commentData.user;
+  export let comment: CommentType;
+  let user = comment.user;
   if (!user) throw new Error("User not found");
 
 </script>
 
 <div class="comment">
-  <ProfilePic pic={user?.avatar}></ProfilePic>
+  <a href={"/user/"+user?.id}><ProfilePic pic={user?.avatar}></ProfilePic></a>
   <div class="left">
     <div>
-      <span>{user?.username}</span> |
+      <a href={"/user/"+user?.id}>{user?.name}</a>
       <!-- <span>14 Jan</span> -->
     </div>
-    <span>{commentData.body}</span>
+    <span>{comment.body}</span>
     <div class="buttons">
       <Button>Like</Button>
       <Button>Dislike</Button>
@@ -26,6 +26,10 @@
 </div>
 
 <style lang="scss">
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
   .comment {
     background-color: #e5e5e5;
     border-radius: var(--radius);

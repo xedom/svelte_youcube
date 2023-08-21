@@ -1,28 +1,31 @@
 <script lang="ts">
   import { DragIcon, RemoveIcon, } from '$lib/icons/index.js';
-  import type { Video } from "$lib/db/types";
+  import type { Video, User } from "$lib/db/types";
   import { parseViews, parseTimestampFromNow } from '$lib/utils/index';
 
   export let video: Video;
+  export let user: User;
 </script>
 
-<a class="video" draggable="true" id="{video.id.toString()}"
-  href="{'/video/'+video.id}"
-  on:dragenter on:drag on:drop on:dragover
-  >
-  <!-- <Button icon="{DragIcon}" /> -->
-  <img class="dragicon" src="{DragIcon}" alt="dragicon" draggable="false">
-  <img class="preview" src="{video.thumbnail}" alt="video" draggable="false">
-  <div class="info">
-    <h3 class="title">{video.id}. {video.title}</h3>
-    <span>
-      <span class="user">{video.user?.username}</span> |
-      <span class="views">{parseViews(video.views)} Views</span> |
-      <span class="date">{parseTimestampFromNow(video.timestamp)}</span>
-    </span>
-  </div>
-  <!-- <Button icon="{RemoveIcon}"></Button> -->
-</a>
+{#if video && user}
+  <a class="video" draggable="true" id="{video.id.toString()}"
+    href="{'/video/'+video.id}"
+    on:dragenter on:drag on:drop on:dragover
+    >
+    <!-- <Button icon="{DragIcon}" /> -->
+    <img class="dragicon" src="{DragIcon}" alt="dragicon" draggable="false">
+    <img class="preview" src="{video.thumbnail}" alt="video" draggable="false">
+    <div class="info">
+      <h3 class="title">{video.id}. {video.title}</h3>
+      <span>
+        <a class="user" href="/user/{user.id}">{video.user?.username}</a> |
+        <span class="views">{parseViews(video.views)} Views</span> |
+        <span class="date">{parseTimestampFromNow(video.timestamp)}</span>
+      </span>
+    </div>
+    <!-- <Button icon="{RemoveIcon}"></Button> -->  
+  </a>
+{/if}
 
 <style lang="scss">
   a {

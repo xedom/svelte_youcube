@@ -5,6 +5,7 @@ import { fetchPosts, fetchRandomPhotos, fetchComments,
 } from '$lib/utils/fetch';
 import { getUser } from './users';
 import { getCommentsByVideoId, handleFetchComments } from './comments';
+import { addPhotos } from '$lib/db/photos';
 
 let videosCache: Video[] = [];
 
@@ -24,38 +25,41 @@ export async function getVideosCountFrom(count: number, skip: number): Promise<V
 
 export async function getVideosCount(count: number): Promise<Video[]> {
   if (count <= 0) return [];
-  if (count >= videosCache.length) {
-    const photos = await fetchRandomPhotos(count);
-    const posts = await fetchPosts(count);
-    
-    for(let i = 0; i < posts.length; i++) {
-      const post = posts[i];
-      const thumbnail = photos[i];
-      const userId = post.userId;
+  if (count <= videosCache.length) return videosCache.slice(0, count);
+  const photos = await fetchRandomPhotos(count);
 
-      let video: Video = {
-        id: post.id,
-        userid: post.userId,
-        title: post.title,
-        description: post.body,
-        duration: getRandomDuration(),
-        thumbnail: thumbnail,
-        likes: getRandomDuration(),
-        dislikes: getRandomDuration(),
-        views: getRandomViews(),
-        timestamp: getRandomDate(),
-      }
+  addPhotos(photos);
+  const posts = await fetchPosts(count);
+  
+  for(let i = 0; i < posts.length; i++) {
+    const post = posts[i];
+    const thumbnail = photos[i];
+    const userId = post.userId;
 
-      const user = await getUser(userId);
-      if (!user) continue; // add function to provide a dummy user
-      video.user = user;
-
-      handleFetchComments(post.id);
-
-      addVideo(video);
+    let video: Video = {
+      id: post.id,
+      userid: post.userId,
+      title: post.title,
+      description: post.body,
+      duration: getRandomDuration(),
+      thumbnail: thumbnail,
+      likes: getRandomDuration(),
+      dislikes: getRandomDuration(),
+      views: getRandomViews(),
+      timestamp: getRandomDate(),
     }
+
+    const user = await getUser(userId);
+    if (!user) continue; // add function to provide a dummy user
+    video.user = user;
+
+    handleFetchComments(post.id);
+
+    addVideo(video);
   }
 
+  if (posts.length == 0) return [];
+  
   return videosCache.slice(0, count);
 }
 

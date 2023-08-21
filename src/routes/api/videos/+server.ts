@@ -1,5 +1,6 @@
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
+import Log from '$lib/utils/logger';
 
 import type { Video } from '$lib/db/types';
 import { getVideosCount, getVideosCountFrom } from '$lib/db/videos';
@@ -7,6 +8,7 @@ import { getPhotos } from '$lib/db/photos';
 
 export const GET: RequestHandler = async ({ url }) => {
   try {
+    Log.serverInfo("/api/videos", url.searchParams);
     const countParam = url.searchParams.get("count");
     const skipParam = url.searchParams.get("skip");
     let count = countParam ? parseInt(countParam) : 1;
@@ -22,12 +24,10 @@ export const GET: RequestHandler = async ({ url }) => {
       videos = await getVideosCount(count);
     }
 
-    // console.log(getPhotos());
     // return new Response(String(random));
     return json({ videos, });
   } catch(err) {
-    console.log("SERVER ERROR > /api/videos");
-    console.log(err);
+    Log.serverError("/api/videos", err);
     return json({
       videos: [],
     });

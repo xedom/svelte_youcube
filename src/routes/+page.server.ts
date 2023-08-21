@@ -1,9 +1,11 @@
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import type { Video } from '$lib/db/types';
+import Log from '$lib/utils/logger';
 
 export const load: PageServerLoad = async ({ params }) => {
   try {
+    Log.serverInfo("/ fetching: http://127.0.0.1:5173/api/videos?count=3&skip=60");
     const res = await Promise.all([
       fetch('http://127.0.0.1:5173/api/videos?count=6&skip=0'),
       fetch('http://127.0.0.1:5173/api/videos?count=8&skip=15'),
@@ -23,6 +25,6 @@ export const load: PageServerLoad = async ({ params }) => {
     }};
   } catch (error) {
     // throw error(404, 'Not found');
-    console.log("SERVER ERROR > PageServerLoad /");
+    Log.serverError("PageServerLoad /");
   }
 };

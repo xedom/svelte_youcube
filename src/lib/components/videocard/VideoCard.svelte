@@ -19,7 +19,7 @@
     </a>
     <div class="right">
       <div class="title">{videoData?.title}</div>
-      <div class="username">{videoData?.user?.name}</div>
+      <a class="username" href="{'/user/'+videoData?.user?.id}">{videoData?.user?.name}</a>
       <div class="info">
         <div class="views">{parseViews(videoData?.views)} Views</div>
         <div class="date">{parseTimestampFromNow(videoData?.timestamp)}</div>
@@ -29,7 +29,7 @@
 </a>
 
 <style lang="scss">
-  a.card {
+  a {
     align-items: stretch;
     text-decoration: none;
     color: inherit;
