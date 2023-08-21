@@ -75,7 +75,7 @@
       </div> -->
       <div class="comments">
         {#each comments as comment}
-          <Comment {comment}/>
+          <Comment {comment} user={comment.user}/>
         {/each}
       </div>
     </div>

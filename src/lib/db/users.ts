@@ -9,7 +9,7 @@ let usersCache: User[] = [{
   password: 'nootnoot',
   name: 'pingu de bro',
   email: 'pingu@noot.com',
-  videos: 314,
+  videos: 69,
 }];
 
 export function getUsers(): User[] {

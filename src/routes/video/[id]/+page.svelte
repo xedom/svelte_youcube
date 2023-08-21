@@ -3,11 +3,13 @@
   import Button from '$lib/components/Button.svelte';
   import { parseDateWithTime, parseViews } from '$lib/utils/index';
   import ProfilePic from '$lib/components/ProfilePic.svelte';
-  import { ProfilePicture, } from '$lib/icons';
+  import { ProfilePicture, PlayIcon, } from '$lib/icons';
   import type { Video, User, Comment as CommentType } from '$lib/db/types';
 
   $: isDescriptionCollapsed = true;
   $: commentInput = '';
+
+  $: playVideo =  false;
 
   export let data: any;
   let video: Video&{comments: CommentType[]} = data.video;
@@ -27,7 +29,7 @@
       password: 'nootnoot',
       name: 'pingu de bro',
       email: 'pingu@noot.com',
-      videos: 314,
+      videos: 69,
     };
 
     const newComment: CommentType = {
@@ -46,8 +48,10 @@
     // const values = await res.json();
 
     commentInput = '';
-    // comments = [newComment, ...comments];
-    comments = [...comments, newComment];
+    comments = [newComment, ...comments];
+    console.log(comments);
+
+    // comments = [...comments, newComment];
   }
 
 </script>
@@ -55,9 +59,18 @@
 
 
 <div class="player">
-  <!-- <video src=""></video> -->
-  <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/lAtz2sctvxA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
-  <img src={video.thumbnail} alt="thumbnail" />
+  {#if playVideo}
+    <video src="https://xed.im/random/rick_roll.mp4" autoplay></video>
+    <!-- <iframe width="560"
+    height="315"
+    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+    title="YouTube video player"
+    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen></iframe> -->
+  {:else}
+    <img class="click" src={video.thumbnail} on:click={() => playVideo = true} alt="thumbnail" />
+    <img class="play click" src="{PlayIcon}" on:click={() => playVideo = true} alt="PlayIcon">
+  {/if}
 </div>
 
 <div class="info">
@@ -103,24 +116,50 @@
     <span>No comments yet</span>
   {:else}
     {#each comments as comment}
-      <Comment {comment}></Comment>
+      <!-- {comment.user?.avatar.toString()} -->
+      <Comment {comment} user={comment.user}></Comment>
     {/each}
   {/if}
 
 </div>
 
 <style lang="scss">
+  iframe, video {
+    height: 100%;
+    width: 100%;
+  }
+
+  img.click {
+    cursor: pointer;
+  }
+
+  img.play {
+    opacity: 0.8;
+    position: absolute;
+    height: 300px !important;
+    top: calc(50% - 150px);
+
+    &:hover {
+      opacity: 1;
+      height: 330px !important;
+      top: calc(50% - 165px);
+      transition: all 0.2s ease-in-out;
+    }
+  }
+
   a {
     color: inherit;
     text-decoration: none;
   }
   .player {
     flex: none;
-    background-color: #151515;
+    background-color: #000000;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 550px;
+    height: 700px;
+    position: relative;
+
     img {
       height: 100%;
     }

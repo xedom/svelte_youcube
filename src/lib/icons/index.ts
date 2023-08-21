@@ -7,6 +7,7 @@ export { default as CollapseIcon } from '$lib/icons/menu_FILL1_wght600_GRAD0_ops
 export { default as SearchIcon } from '$lib/icons/search_FILL1_wght600_GRAD0_opsz48.svg';
 export { default as DragIcon } from '$lib/icons/drag_indicator_FILL1_wght600_GRAD0_opsz48.svg';
 export { default as RemoveIcon } from '$lib/icons/delete_FILL1_wght600_GRAD0_opsz48.svg';
+export { default as PlayIcon } from '$lib/icons/play_arrow_FILL1_wght600_GRAD0_opsz48.svg';
 
 export { default as WaitingGif } from '$lib/icons/waiting.gif';
 export { default as ProfilePicture } from '$lib/icons/profile.gif';

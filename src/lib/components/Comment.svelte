@@ -4,7 +4,8 @@
   import type { Video, User, Comment as CommentType } from '$lib/db/types';
 
   export let comment: CommentType;
-  let user = comment.user;
+  export let user: User|undefined;
+  // let user = comment.user;
   if (!user) throw new Error("User not found");
 
 </script>
@@ -20,7 +21,7 @@
     <div class="buttons">
       <Button>Like</Button>
       <Button>Dislike</Button>
-      <Button>Replay</Button>
+      <Button>Reply</Button>
     </div>
   </div>
 </div>
