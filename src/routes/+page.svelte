@@ -13,12 +13,12 @@
   const { sponsored_videos, shorts_videos, new_videos, films_videos, random_videos } = videos;
 </script>
 
-<!-- <Modal id='short-modal'>
+<Modal id='short-modal'>
 	<h1>Shorts</h1>
   <div class="modalButtons">
     <Button onClick={()=>getModal('short-modal').close()}>Cancel</Button>
   </div>
-</Modal> -->
+</Modal>
 
 <div class="buttons">
   <Button>All</Button>
@@ -44,7 +44,7 @@
 <div class="shorts">
   <VerticalVideoContainer>
     {#each shorts_videos as video}
-      <VerticalVideoCard on:click={()=>getModal('short-modal').close()} {video}/>
+      <VerticalVideoCard on:click={()=>getModal('short-modal').open()} {video}/>
     {/each}
   </VerticalVideoContainer>
 </div>
@@ -64,7 +64,7 @@
 <div class="films">
   <VerticalVideoContainer>
     {#each films_videos as video}
-      <VerticalVideoCard on:click={()=>getModal('short-modal').close()} {video}/>
+      <VerticalVideoCard on:click={()=>getModal('short-modal').open()} {video}/>
     {/each}
   </VerticalVideoContainer>
 </div>

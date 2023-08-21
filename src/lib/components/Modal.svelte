@@ -1,26 +1,21 @@
 <script context="module" lang="ts">
-  type Modal = {
-    open: () => void;
-    close: () => void;
-  }
-
+  type Modal = { open: () => void; close: () => void; };
 	const modals: { [key: string]: Modal; } = {}
 
 	export function getModal(id: string = 'default') {
 		return modals[id];
 	}
-
-  console.log("modals", modals);
 </script>
 
 <script lang="ts">
   import {onDestroy} from 'svelte';
-  export const id: string = 'default';
+  export let id: string = 'default';
   let visible = false;
 
   function keyPress(ev: KeyboardEvent) {
     if (ev.key=="Escape") close();
   }
+
   function open(){
     if (visible) return;
     // window.addEventListener("keydown", keyPress);
