@@ -2,15 +2,15 @@
   import { parseViews } from '$lib/utils/index';
   import type { Video } from '$lib/db/types';
 
-  export let videoData: Video;
+  export let video: Video;
 </script>
 
-<div class="card-vertical">
-  <img src="{videoData?.thumbnail}" alt="short img">
+<div class="card-vertical" on:click>
+  <img src="{video?.thumbnail}" alt="short img">
   <div class="info">
-    <!-- <div class="duration">{videoData.duration}</div> -->
-    <div class="title">{videoData?.title}</div>
-    <div class="views">{parseViews(videoData?.views)}</div>
+    <!-- <div class="duration">{video.duration}</div> -->
+    <div class="title">{video?.title}</div>
+    <div class="views">{parseViews(video?.views)}</div>
   </div>
 </div>
 
@@ -24,13 +24,13 @@
     width: 250px;
     overflow: hidden;
     margin: 0.5em 0;
-    
+
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    
+
     .info {
       font-size: 0.9em;
       position: absolute;

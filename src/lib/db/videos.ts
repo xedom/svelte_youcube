@@ -30,7 +30,7 @@ export async function getVideosCount(count: number): Promise<Video[]> {
 
   addPhotos(photos);
   const posts = await fetchPosts(count);
-  
+
   for(let i = 0; i < posts.length; i++) {
     const post = posts[i];
     const thumbnail = photos[i];
@@ -59,7 +59,7 @@ export async function getVideosCount(count: number): Promise<Video[]> {
   }
 
   if (posts.length == 0) return [];
-  
+
   return videosCache.slice(0, count);
 }
 
@@ -80,7 +80,12 @@ export function getVideoWithComments(id: number): Video&{comments: Comment[]}|un
 }
 
 export function addVideo(video: Video): void {
-  videosCache.push(video);
+  videosCache.find(v => video.id === v.id) || videosCache.push(video);
+
+  // for (let cachedVideo of videosCache) {
+  //   if (video.id === cachedVideo.id) continue;
+  //   videosCache.push(video);
+  // }
 }
 
 export function removeVideo(id: number): void {
