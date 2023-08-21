@@ -8,14 +8,17 @@
   import Button from '$lib/components/Button.svelte';
   import Modal, { getModal } from '$lib/components/Modal.svelte';
 
+
   export let data: any;
   let videos = data.videos;
+  $: clickedShort = shorts_videos[0];
   const { sponsored_videos, shorts_videos, new_videos, films_videos, random_videos } = videos;
 </script>
 
 <Modal id='short-modal'>
-	<h1>Shorts</h1>
+	<h1>Short</h1>
   <div class="modalButtons">
+    <VerticalVideoCard video={clickedShort}/>
     <Button onClick={()=>getModal('short-modal').close()}>Cancel</Button>
   </div>
 </Modal>
@@ -44,7 +47,10 @@
 <div class="shorts">
   <VerticalVideoContainer>
     {#each shorts_videos as video}
-      <VerticalVideoCard on:click={()=>getModal('short-modal').open()} {video}/>
+      <VerticalVideoCard on:click={()=>{
+        clickedShort = video;
+        getModal('short-modal').open();
+      }} {video}/>
     {/each}
   </VerticalVideoContainer>
 </div>
@@ -64,7 +70,10 @@
 <div class="films">
   <VerticalVideoContainer>
     {#each films_videos as video}
-      <VerticalVideoCard on:click={()=>getModal('short-modal').open()} {video}/>
+      <VerticalVideoCard on:click={()=>{
+        clickedShort = video;
+        getModal('short-modal').open();
+      }} {video}/>
     {/each}
   </VerticalVideoContainer>
 </div>
