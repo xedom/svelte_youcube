@@ -35,13 +35,13 @@ body > div {
 }
 ::-webkit-scrollbar-track {
 	background: #dadada;
-	border-radius: 2em;
+	border-radius: 2rem;
 }
 ::-webkit-scrollbar-thumb {
 	background: #242424;
-	border-radius: 2em;
+	border-radius: 2rem;
 }
 ::-webkit-scrollbar-thumb:hover {
 	background: #202020;
-	border-radius: 2em;
+	border-radius: 2rem;
 }

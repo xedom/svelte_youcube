@@ -63,16 +63,16 @@
 
 <style lang="scss">
   .success {
-    padding: 0.25em 2em;
+    padding: 0.25rem 2rem;
     background-color: #00ff66;
     border-radius: var(--radius);
-    margin-top: 0.5em;
+    margin-top: 0.5rem;
   }
   .error {
-    padding: 0.25em 2em;
+    padding: 0.25rem 2rem;
     background-color: #ff6655;
     border-radius: var(--radius);
-    margin-top: 0.5em;
+    margin-top: 0.5rem;
   }
 
   .auth {
@@ -83,20 +83,20 @@
   }
   .buttons {
     display: flex;
-    gap: 1em;
+    gap: 1rem;
     justify-content: center;
-    margin-top: 2em;
+    margin-top: 2rem;
   }
   form {
     background-color: #e9e9e9;
-    padding: 2em;
+    padding: 2rem;
     align-items: center;
-    gap: 0.5em;
+    gap: 0.5rem;
     display: flex;
     flex-direction: column;
 
     input, button {
-      padding: .5em;
+      padding: .5rem;
       min-width: 300px;
     }
     button {

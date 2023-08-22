@@ -91,7 +91,7 @@
 <style lang="scss">
   .buttons {
     display: flex;
-    padding: 0.5em;
-    gap: 0.5em;
+    padding: 0.5rem;
+    gap: 0.5rem;
   }
 </style>

@@ -8,10 +8,10 @@
 
 <style lang="scss">
   .card-container {
-    // padding: 0.5em;
+    // padding: 0.5rem;
     display: flex;
     flex-direction: row;
-    gap: 1em;
+    gap: 1rem;
     overflow-x: auto;
   }
 </style>

@@ -163,14 +163,14 @@
   }
 
   .comments {
-    margin-top: 2em;
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: 1rem;
   }
   .input {
     display: flex;
-    gap: 1em;
+    gap: 1rem;
 
     input {
       flex: 1;
@@ -179,13 +179,13 @@
   .info {
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: 1rem;
   }
   .title {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1em;
+    gap: 1rem;
     span {
       flex: 1
     }

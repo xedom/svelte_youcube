@@ -155,8 +155,8 @@
     display: flex;
     flex-direction: row;
 
-    gap: 2em;
-    padding: 1em;
+    gap: 2rem;
+    padding: 1rem;
 
     align-items: center;
     justify-content: space-between;
@@ -169,7 +169,7 @@
 
   .showcase {
     display: flex;
-    gap: 1em;
+    gap: 1rem;
 
     img {
       flex: none;
@@ -182,35 +182,35 @@
     .desc {
       display: flex;
       flex-direction: column;
-      gap: 1em;
+      gap: 1rem;
     }
   }
 
   .community {
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: 1rem;
 
     .post-input {
       display: flex;
-      gap: 1em;
+      gap: 1rem;
     }
   }
 
   .infos {
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: 1rem;
   }
 
   .buttons {
     display: flex;
     flex-direction: row;
-    gap: 1em;
-    padding: 1em;
+    gap: 1rem;
+    padding: 1rem;
   }
 
   hr {
-    margin: 2em;
+    margin: 2rem;
   }
 </style>

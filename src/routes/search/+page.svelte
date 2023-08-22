@@ -84,7 +84,7 @@
     flex-direction: column;
     height: 300px;
     overflow-y: scroll;
-    gap: 0.5em;
+    gap: 0.5rem;
   }
 
   .video {

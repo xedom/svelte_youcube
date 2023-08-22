@@ -27,8 +27,8 @@
     border-radius: 50%;
 
     &.small {
-      height: 2.5em;
-      width: 2.5em;
+      height: 2.5rem;
+      width: 2.5rem;
     }
 
     &.large {

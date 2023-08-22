@@ -19,15 +19,15 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 1em;
+    gap: 1rem;
 
-    padding: 0.5em 1em;
+    padding: 0.5rem 1rem;
     background-color: #f5f5f5;
 
     border: none;
     cursor: pointer;
     overflow: hidden;
-    border-radius: 0.5em;
+    border-radius: 0.5rem;
 
     &.rounded {
       border-radius: var(--radius);

@@ -23,7 +23,7 @@
         <span class="date">{parseTimestampFromNow(video.timestamp)}</span>
       </span>
     </div>
-    <!-- <Button icon="{RemoveIcon}"></Button> -->  
+    <!-- <Button icon="{RemoveIcon}"></Button> -->
   </a>
 {/if}
 
@@ -36,13 +36,13 @@
   .video {
     // flex: 1;
     display: flex;
-    margin: 0 .5em .5em .5em;
-    padding: .25em 0.5em;
+    margin: 0 .5rem .5rem .5rem;
+    padding: .25rem 0.5rem;
     // align-items: center;
     background-color: #f5f5f5;
     border-radius: var(--radius);
-    // padding: 0 1em;
-    gap: 0.5em;
+    // padding: 0 1rem;
+    gap: 0.5rem;
 
     .info { flex: 1; }
 
@@ -60,8 +60,8 @@
     img.dragicon {
       cursor: grab;
       align-self: center;
-      width: 2em;
-      height: 2em;
+      width: 2rem;
+      height: 2rem;
     }
   }
 </style>

@@ -55,7 +55,7 @@
   .modalButtons {
     display: flex;
     justify-content: center;
-    gap: 1em;
+    gap: 1rem;
   }
 
   a {
@@ -68,14 +68,14 @@
     justify-content: space-between;
     align-items: center;
     background-color: #e5e5e5;
-    padding: .5em;
-    gap: 1em;
+    padding: .5rem;
+    gap: 1rem;
 
     .search {
       flex: 1;
       display: flex;
       justify-content: center;
-      gap: 0.25em;
+      gap: 0.25rem;
 
       input {
         flex: 1;
@@ -83,7 +83,7 @@
         border: none;
         border-radius: var(--radius);
         outline: none;
-        padding: 0 1em;
+        padding: 0 1rem;
       }
     }
   }

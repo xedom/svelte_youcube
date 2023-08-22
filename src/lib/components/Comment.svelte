@@ -34,19 +34,19 @@
   .comment {
     background-color: #e5e5e5;
     border-radius: var(--radius);
-    padding: 1em;
+    padding: 1rem;
     display: flex;
-    gap: 1em;
+    gap: 1rem;
 
     .left {
       display: flex;
       flex-direction: column;
-      gap: 1em
+      gap: 1rem
     }
 
     .buttons {
       display: flex;
-      gap: 0.5em;
+      gap: 0.5rem;
     }
   }
 </style>

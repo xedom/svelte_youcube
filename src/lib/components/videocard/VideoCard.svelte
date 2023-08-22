@@ -37,7 +37,7 @@
     // max-width: 350px;
     flex-direction: column;
     border-radius: var(--radius);
-    gap: 0.5em;
+    gap: 0.5rem;
 
     .preview {
       position: relative;
@@ -53,10 +53,10 @@
       }
 
       .time {
-        font-size: 0.8em;
+        font-size: 0.8rem;
         position: absolute;
         border-radius: var(--radius);
-        padding: 0.25em 0.5em;
+        padding: 0.25rem 0.5rem;
         background-color: black;
         color: #ffffff;
         bottom: 5px;
@@ -71,7 +71,7 @@
     .bottom {
       display: flex;
       width: 100%;
-      gap: 0.5em;
+      gap: 0.5rem;
     }
 
     .right {
@@ -82,12 +82,12 @@
       display: flex;
       width: 100%;
       flex-direction: row;
-      gap: 1em;
-      font-size: 0.8em;
+      gap: 1rem;
+      font-size: 0.8rem;
     }
 
     .username {
-      font-size: 0.8em;
+      font-size: 0.8rem;
     }
   }
 </style>

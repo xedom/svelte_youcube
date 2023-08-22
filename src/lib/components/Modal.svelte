@@ -63,13 +63,13 @@
 		border-radius: 6px;
 		background: white;
     border: 2px solid #000;
-		padding: 1em;
+		padding: 1rem;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1em;
+    gap: 1rem;
 
 		max-width: calc(100vw - 20px);
 		max-height: calc(100vh - 20px);

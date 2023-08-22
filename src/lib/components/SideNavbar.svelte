@@ -41,8 +41,8 @@
 
     display: flex;
     flex-direction: column;
-    gap: .5em;
-    padding: .5em;
+    gap: .5rem;
+    padding: .5rem;
     padding-right: 0;
   }
 </style>

@@ -23,7 +23,7 @@
     height: 400px;
     width: 250px;
     overflow: hidden;
-    margin: 0.5em 0;
+    margin: 0.5rem 0;
 
     img {
       width: 100%;
@@ -32,11 +32,11 @@
     }
 
     .info {
-      font-size: 0.9em;
+      font-size: 0.9rem;
       position: absolute;
       bottom: 0;
       color: #ffffff;
-      padding: 0.5em;
+      padding: 0.5rem;
       width: 100%;
       text-shadow: 2px 2px 6px black;
       background: linear-gradient(transparent 12%, rgba(0, 0, 0, 0.9));

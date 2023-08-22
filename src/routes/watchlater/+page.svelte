@@ -84,18 +84,18 @@
   .summary {
     height: 100%;
     position: relative;
-    padding: 2em;
+    padding: 2rem;
     border-radius: var(--radius);
     // background-color: aquamarine;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: 1rem;
     background: linear-gradient(transparent 66%, rgba(255, 255, 255, 0.9));
 
     .buttons {
       display: flex;
-      gap: 0.5em;
+      gap: 0.5rem;
     }
 
     img.bg {
@@ -117,6 +117,6 @@
     flex: 1;
     flex-direction: row;
     overflow: auto;
-    // padding: 0 0.5em;
+    // padding: 0 0.5rem;
   }
 </style>
