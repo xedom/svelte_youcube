@@ -18,8 +18,8 @@
 </script>
 
 <div class="buttons">
-  <Button onClick={onClickLogin}>Login</Button>
-  <Button onClick={onClickRegister}>Register</Button>
+  <Button on:click={onClickLogin}>Login</Button>
+  <Button on:click={onClickRegister}>Register</Button>
 </div>
 
 <div class="auth">
@@ -27,32 +27,32 @@
   {#if form?.isLogging ?? isLogging}
     <form method="post" action="?/login">
       <h1>Login</h1>
-      
+
       <label for="username">Username</label>
       <input type="text" id="username" name="username">
-      
+
       <label for="password">Password</label>
       <input type="password" id="password" name="password">
-      
+
       <button>Login</button>
     </form>
   {:else}
     <form method="post" action="?/register">
       <h1>Register</h1>
-      
+
       <label for="username">Username</label>
       <input type="text" id="username" name="username" value={form?.username ?? ''}>
-      
+
       <label for="email">E-Mail</label>
       <input type="text" id="email" name="email" value={form?.email ?? ''}>
-      
+
       <label for="password">Password</label>
       <input type="password" id="password" name="password" value={form?.password ?? ''}>
-      
+
       <button>Register</button>
     </form>
   {/if}
-  
+
   {#if form?.success}
     <div class="success">{form?.success}</div>
   {/if}

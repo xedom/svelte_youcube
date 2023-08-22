@@ -37,10 +37,10 @@
 </div>
 
 <div class="buttons">
-  <Button onClick={() => page = Page.Home}>Home</Button>
-  <Button onClick={() => page = Page.Videos}>Videos</Button>
-  <Button onClick={() => page = Page.Community}>Community</Button>
-  <Button onClick={() => page = Page.Info}>Info</Button>
+  <Button on:click={() => page = Page.Home}>Home</Button>
+  <Button on:click={() => page = Page.Videos}>Videos</Button>
+  <Button on:click={() => page = Page.Community}>Community</Button>
+  <Button on:click={() => page = Page.Info}>Info</Button>
 </div>
 
 <!-- home -->

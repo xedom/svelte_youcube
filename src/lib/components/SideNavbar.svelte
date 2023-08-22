@@ -15,40 +15,22 @@
 </script>
 
 <aside>
-  <Button onClick={() => onClick("/")}
-    {collapsed}
-    icon={HomeIcon}
-  >
+  <Button on:click={() => onClick("/")} {collapsed} icon={HomeIcon}>
     Home
   </Button>
-  <!-- <Button onClick={() => onClick("/user")}
-    {collapsed}
-    icon={PersonIcon}
-  >
+  <!-- <Button on:click={() => onClick("/user")} {collapsed} icon={PersonIcon}>
     User
   </Button> -->
-  <Button onClick={() => onClick("/subs")}
-    {collapsed}
-    icon={SubscriptionsIcon}
-  >
+  <Button on:click={() => onClick("/subs")} {collapsed} icon={SubscriptionsIcon}>
     Subs
   </Button>
-  <Button onClick={() => onClick("/auth")}
-    {collapsed}
-    icon={PersonIcon}
-  >
+  <Button on:click={() => onClick("/auth")} {collapsed} icon={PersonIcon}>
     Auth
   </Button>
-  <!-- <Button onClick={() => onClick("/video")}
-    {collapsed}
-    icon={SmartDisplayIcon}
-  >
+  <!-- <Button on:click={() => onClick("/video")} {collapsed} icon={SmartDisplayIcon}>
     Video
   </Button> -->
-  <Button onClick={() => onClick("/watchlater")}
-    {collapsed}
-    icon={LibraryIcon}
-  >
+  <Button on:click={() => onClick("/watchlater")} {collapsed} icon={LibraryIcon}>
     Watch Later
   </Button>
 </aside>

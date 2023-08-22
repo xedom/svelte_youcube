@@ -60,8 +60,8 @@
 
     <div class="buttons">
       <Button>Share</Button>
-      <Button onClick={ () => goto(`/video/${videos[0].id}?playlist=1`) }>Play</Button>
-      <Button onClick={ () => goto(`/video/${videos[Math.floor(Math.random()*videos.length)].id}?playlist=1`) }>Play Randomly</Button>
+      <Button on:click={ () => goto(`/video/${videos[0].id}?playlist=1`) }>Play</Button>
+      <Button on:click={ () => goto(`/video/${videos[Math.floor(Math.random()*videos.length)].id}?playlist=1`) }>Play Randomly</Button>
     </div>
   </div>
   <div id="videos" class="videos">

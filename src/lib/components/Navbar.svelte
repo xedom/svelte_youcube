@@ -23,7 +23,7 @@
     Drop here to upload
   </div>
   <div class="modalButtons">
-    <Button onClick={()=>getModal().close()}>Cancel</Button>
+    <Button on:click={()=>getModal().close()}>Cancel</Button>
   </div>
 </Modal>
 
@@ -37,7 +37,7 @@
     <input type="text" on:keydown={onKeydown} bind:value={inputValue}/>
     <Button icon={SearchIcon} collapsed={true} onClick={()=>goto(`/search?query=${inputValue}`)}>Search</Button>
   </div>
-  <Button onClick={()=>getModal().open()}>Upload</Button>
+  <Button on:click={()=>getModal().open()}>Upload</Button>
   <a href="/user/1001"><ProfilePic pic={undefined} size={"small"}/></a>
 </nav>
 

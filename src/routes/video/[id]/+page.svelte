@@ -96,10 +96,10 @@
     </div>
     {#if isDescriptionCollapsed}
       <span>{video.description.slice(0, 80)}...</span>
-      <Button onClick={() => {isDescriptionCollapsed = !isDescriptionCollapsed}}>Show More...</Button>
+      <Button on:click={() => {isDescriptionCollapsed = !isDescriptionCollapsed}}>Show More...</Button>
     {:else}
       <span>{video.description}</span>
-      <Button onClick={() => {isDescriptionCollapsed = !isDescriptionCollapsed}}>Show Less</Button>
+      <Button on:click={() => {isDescriptionCollapsed = !isDescriptionCollapsed}}>Show Less</Button>
     {/if}
 
   </div>
@@ -109,7 +109,7 @@
   <!-- <h4>input: {commentInput}</h4> -->
   <div class="input">
     <input type="text" bind:value={commentInput} />
-    <Button onClick={onCommentSubmit}>Send</Button>
+    <Button on:click={onCommentSubmit}>Send</Button>
   </div>
   {#if comments.length === 0}
     <span>No comments yet</span>

@@ -19,7 +19,7 @@
 	<h1>Short</h1>
   <div class="modalButtons">
     <VerticalVideoCard video={clickedShort}/>
-    <Button onClick={()=>getModal('short-modal').close()}>Cancel</Button>
+    <Button on:click={()=>getModal('short-modal').close()}>Cancel</Button>
   </div>
 </Modal>
 
