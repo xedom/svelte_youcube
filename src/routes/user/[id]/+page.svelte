@@ -69,7 +69,7 @@
     <h3>Uploaded Videos</h3>
     <VideoContainer>
       {#each videos as video}
-        <VideoCard videoData={video}></VideoCard>
+        <VideoCard {video}></VideoCard>
       {/each}
     </VideoContainer>
   {/if}

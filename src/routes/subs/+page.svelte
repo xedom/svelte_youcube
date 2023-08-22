@@ -14,7 +14,7 @@
 <div>
   <VideoContainer>
     {#each videos as video}
-      <VideoCard videoData={video}/>
+      <VideoCard {video}/>
     {/each}
   </VideoContainer>
 </div>

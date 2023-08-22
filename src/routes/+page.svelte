@@ -37,7 +37,7 @@
 <div class="sponsored">
   <VideoContainer>
     {#each sponsored_videos as video}
-      <VideoCard videoData={video}/>
+      <VideoCard {video}/>
     {/each}
   </VideoContainer>
 </div>
@@ -60,7 +60,7 @@
 <div class="new">
   <VideoContainer>
     {#each new_videos as video}
-      <VideoCard videoData={video}/>
+      <VideoCard {video}/>
     {/each}
   </VideoContainer>
 </div>
@@ -83,7 +83,7 @@
 <div class="random">
   <VideoContainer>
     {#each random_videos as video}
-      <VideoCard videoData={video}/>
+      <VideoCard {video}/>
     {/each}
   </VideoContainer>
 </div>

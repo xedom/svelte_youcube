@@ -4,25 +4,24 @@
   import ProfilePic from '$lib/components/ProfilePic.svelte';
   import type { Video } from '$lib/db/types';
 
-  export let videoData: Video;
+  export let video: Video;
 </script>
 
-<a class="card" href={`/video/${videoData?.id}`}>
+<a class="card" href={`/video/${video?.id}`}>
   <div class="preview">
-    <img src="{videoData?.thumbnail}" alt="video thumbnail">
-    <span class="time">{parseTime(videoData?.duration)}</span>
+    <img src="{video?.thumbnail}" alt="video thumbnail">
+    <span class="time">{parseTime(video?.duration)}</span>
   </div>
   <div class="bottom">
-    <a class="user" href="{'/user/'+videoData?.user?.id}">
-      <!-- <img src="{videoData?.user?.avatar}" alt="user"> -->
-      <ProfilePic size={"small"} pic={videoData?.user?.avatar}></ProfilePic>
+    <a class="user" href="{'/user/'+video?.user?.id}">
+      <ProfilePic size={"small"} pic={video?.user?.avatar}></ProfilePic>
     </a>
     <div class="right">
-      <div class="title">{videoData?.title}</div>
-      <a class="username" href="{'/user/'+videoData?.user?.id}">{videoData?.user?.name}</a>
+      <div class="title">{video?.title}</div>
+      <a class="username" href="{'/user/'+video?.user?.id}">{video?.user?.name}</a>
       <div class="info">
-        <div class="views">{parseViews(videoData?.views)} Views</div>
-        <div class="date">{parseTimestampFromNow(videoData?.timestamp)}</div>
+        <div class="views">{parseViews(video?.views)} Views</div>
+        <div class="date">{parseTimestampFromNow(video?.timestamp)}</div>
       </div>
     </div>
   </div>
