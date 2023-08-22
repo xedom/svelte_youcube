@@ -6,7 +6,7 @@
 	font-family: var(--font-body);
 	color: var(--color-text);
 
-	--radius: 0.25em;
+	--radius: 8px;
 }
 
 * {

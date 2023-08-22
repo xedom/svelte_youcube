@@ -3,8 +3,18 @@
   import Button from '$lib/components/Button.svelte';
   import ProfilePic from '$lib/components/ProfilePic.svelte';
   import Modal, { getModal } from '$lib/components/Modal.svelte';
+  import { goto } from '$app/navigation';
 
   export let onCollapse: () => void = () => {};
+
+  $: inputValue = '';
+
+  export const onKeydown = ({ target, key }: KeyboardEvent) => {
+    if (key === 'Enter') {
+      // const inputValue = (target as HTMLButtonElement).value;
+      goto(`/search?query=${inputValue}`);
+    }
+  };
 </script>
 
 <Modal>
@@ -24,8 +34,8 @@
   <!-- <img src="" alt="logo"> -->
   <a href="/"><h2>YOU/CUBE</h2></a>
   <div class="search">
-    <input type="text"/>
-    <Button icon={SearchIcon} collapsed={true}>Search</Button>
+    <input type="text" on:keydown={onKeydown} bind:value={inputValue}/>
+    <Button icon={SearchIcon} collapsed={true} onClick={()=>goto(`/search?query=${inputValue}`)}>Search</Button>
   </div>
   <Button onClick={()=>getModal().open()}>Upload</Button>
   <a href="/user/1001"><ProfilePic pic={undefined} size={"small"}/></a>

@@ -4,6 +4,7 @@
   import ProfilePic from '$lib/components/ProfilePic.svelte';
   import Comment from '$lib/components/Comment.svelte';
   import { VideoCard, VideoContainer } from '$lib/components/videocard';
+  import { PlayIcon, } from '$lib/icons';
   import type { Video, User, Comment as CommentType } from '$lib/db/types';
 
   export let data: any;
@@ -15,6 +16,7 @@
   enum Page { Home, Videos, Community, Info, }
 
   $: page = Page.Home;
+  $: playVideo = false;
 </script>
 
 <div class="background" style="background-image: url({pic4});">
@@ -45,7 +47,14 @@
   {#if lastVideo && page == Page.Home}
     <div class="content">
       <div class="showcase">
-        <img src="{lastVideo.thumbnail}" alt="vid">
+        <div class="player">
+          {#if playVideo}
+            <video src="https://xed.im/random/rick_roll.mp4" autoplay controls></video>
+          {:else}
+            <img class="thumbnail click" src={lastVideo.thumbnail} on:click={() => playVideo = true} alt="thumbnail" />
+            <img class="play click" src="{PlayIcon}" on:click={() => playVideo = true} alt="PlayIcon">
+          {/if}
+        </div>
         <div class="desc">
           <h2>{lastVideo.title}</h2>
           <span>{lastVideo.description}</span>
@@ -95,6 +104,42 @@
 <hr>
 
 <style lang="scss">
+  .player {
+    flex: none;
+    width: 500px;
+    height: 300px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    position: relative;
+
+    img.thumbnail {
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50px);
+      height: 100px;
+      width: 100px;
+      opacity: 0.9;
+    }
+
+    video {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .click {
+      cursor: pointer;
+    }
+  }
+
   .background {
     flex: none;
     height: 300px;

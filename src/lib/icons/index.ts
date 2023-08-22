@@ -11,4 +11,7 @@ export { default as PlayIcon } from '$lib/icons/play_arrow_FILL1_wght600_GRAD0_o
 
 export { default as WaitingGif } from '$lib/icons/waiting.gif';
 export { default as ProfilePicture } from '$lib/icons/profile.gif';
+export { default as CatDancingGif } from '$lib/icons/cat_dancing.gif';
+export { default as EpicDanceGif } from '$lib/icons/epicdance.gif';
+
 

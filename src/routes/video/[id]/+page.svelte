@@ -9,7 +9,7 @@
   $: isDescriptionCollapsed = true;
   $: commentInput = '';
 
-  $: playVideo =  false;
+  $: playVideo = false;
 
   export let data: any;
   let video: Video&{comments: CommentType[]} = data.video;
@@ -53,7 +53,6 @@
 
     // comments = [...comments, newComment];
   }
-
 </script>
 
 
@@ -124,33 +123,7 @@
 </div>
 
 <style lang="scss">
-  iframe, video {
-    height: 100%;
-    width: 100%;
-  }
 
-  img.click {
-    cursor: pointer;
-  }
-
-  img.play {
-    opacity: 0.8;
-    position: absolute;
-    height: 300px !important;
-    top: calc(50% - 150px);
-
-    &:hover {
-      opacity: 1;
-      height: 330px !important;
-      top: calc(50% - 165px);
-      transition: all 0.2s ease-in-out;
-    }
-  }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
   .player {
     flex: none;
     background-color: #000000;
@@ -160,9 +133,33 @@
     height: 700px;
     position: relative;
 
-    img {
+    iframe, video {
       height: 100%;
+      width: 100%;
+      object-fit: cover;
     }
+
+    img { height: 100%; }
+    img.click { cursor: pointer; }
+
+    img.play {
+      opacity: 0.8;
+      position: absolute;
+      height: 300px !important;
+      top: calc(50% - 150px);
+
+      &:hover {
+        opacity: 1;
+        height: 330px !important;
+        top: calc(50% - 165px);
+        transition: all 0.2s ease-in-out;
+      }
+    }
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
   }
 
   .comments {
