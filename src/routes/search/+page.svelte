@@ -24,7 +24,7 @@
 
     // videos = [...videos, ...newVideos];
     return await new Promise(async (resolve) => {
-      setTimeout(() => {
+      setTimeout(() => { // TODO: remove (used only to test UI)
         videos = [...videos, ...newVideos];
         resolve()
       }, 2000);
@@ -84,7 +84,7 @@
     flex-direction: column;
     height: 300px;
     overflow-y: scroll;
-    gap: 0.5rem;
+    gap: 1rem;
   }
 
   .video {
@@ -106,21 +106,23 @@
       flex-direction: column;
       justify-content: stretch;
       align-items: flex-start;
+
       h3 {
         font-size: 1.5rem;
         margin: 0;
       }
-    }
-    .stats {
-      font-size: 0.9rem;
-      color: #3d3d3d;
-    }
 
-    .user {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
+      .stats {
+        font-size: 0.9rem;
+        color: #3d3d3d;
+      }
+
+      .user {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 0.5rem 0;
+      }
     }
   }
 </style>

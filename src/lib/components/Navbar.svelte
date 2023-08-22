@@ -1,6 +1,7 @@
 <script lang="ts">
   import { CollapseIcon, SearchIcon, } from '$lib/icons/index.js';
   import Button from '$lib/components/Button.svelte';
+  import SuperInput from '$lib/components/SuperInput.svelte';
   import ProfilePic from '$lib/components/ProfilePic.svelte';
   import Modal, { getModal } from '$lib/components/Modal.svelte';
   import { goto } from '$app/navigation';
@@ -28,14 +29,16 @@
 </Modal>
 
 <nav>
-  <Button icon={CollapseIcon} collapsed={true} onClick={() => onCollapse()}>
+  <Button icon={CollapseIcon} collapsed={true} on:click={() => onCollapse()}>
     Collapse
   </Button>
   <!-- <img src="" alt="logo"> -->
   <a href="/"><h2>YOU/CUBE</h2></a>
   <div class="search">
-    <input type="text" on:keydown={onKeydown} bind:value={inputValue}/>
-    <Button icon={SearchIcon} collapsed={true} onClick={()=>goto(`/search?query=${inputValue}`)}>Search</Button>
+    <div class="container">
+      <SuperInput on:keydown={onKeydown} bind:value={inputValue}/>
+      <Button icon={SearchIcon} collapsed={true} on:click={()=>goto(`/search?query=${inputValue}`)}>Search</Button>
+    </div>
   </div>
   <Button on:click={()=>getModal().open()}>Upload</Button>
   <a href="/user/1001"><ProfilePic pic={undefined} size={"small"}/></a>
@@ -77,13 +80,11 @@
       justify-content: center;
       gap: 0.25rem;
 
-      input {
-        flex: 1;
-        max-width: 800px;
-        border: none;
-        border-radius: var(--radius);
-        outline: none;
-        padding: 0 1rem;
+      .container {
+        width: 800px;
+        display: flex;
+        justify-content: center;
+        gap: 0.25rem;
       }
     }
   }
